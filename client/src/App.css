@@ -1,0 +1,138 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.content {
+  padding-top: 80px; 
+  background-color: #f8f8f8;
+}
+
+/* Header.css */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(243, 244, 226);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 1rem; 
+}
+
+.fixed-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Loader */
+.pending::before {
+  font-family: "Material Symbols Outlined";
+  content: "autorenew";
+  color: #f1c40f;
+  animation: spin 2s linear infinite;
+}
+
+/* Synced Icon */
+.synced::before {
+  font-family: "Material Symbols Outlined";
+  content: "check_circle";
+  color: #2ecc71;
+}
+
+/* Error Icon */
+.error::before {
+  font-family: "Material Symbols Outlined";
+  content: "error";
+  color: #e74c3c;
+}
+
+.input-action,
+li > *,
+input[type="date"] {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.input-action {
+  width: 100%;
+}
+
+input[type="date"] {
+  width: 100%;
+  max-width: 200px; /* Adjust as needed */
+  display: ${({ selectedDate }) => (selectedDate ? "block" : "none")};
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Common styles for input and list items */
+.input-action,
+li > * {
+  font-size: 1rem;
+  padding: 0.2rem 1rem;
+  background-color: transparent;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* List styles */
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+li {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  margin: 1rem;
+
+  & input {
+    flex-grow: 1;
+  }
+}
+
+li > span {
+  min-width: 250px;
+}
+
+/* Button styles */
+li button {
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: 0.3s ease-in-out;
+    transform: translateY(100%);
+  }
+
+  &:hover {
+    &::before {
+      transform: translateY(0);
+    }
+  }
+}
